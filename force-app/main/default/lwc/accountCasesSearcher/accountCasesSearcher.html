@@ -12,13 +12,14 @@
             </lightning-button>
         </div>
         <template if:true={cases}>
-            <lightning-datatable data={cases}
+            <lightning-datatable key-field="Id"
                                  columns={columns}
-                                 key-field="Id">
+                                 data={cases.data}                                 
+                                 >
             </lightning-datatable>
         </template>
         <template if:true={error}>
-            <p class="slds-p-around_medium slds-text-color_error">{error}</p>
+            <p class="slds-p-around_medium slds-text-color_error">Erreur : {error}</p>
         </template>
     </lightning-card>
 </template>
