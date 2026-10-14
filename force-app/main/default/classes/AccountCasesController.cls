@@ -1,6 +1,6 @@
 public with sharing class AccountCasesController {
 
-    @AuraEnabled
+    @AuraEnabled 
     public static void findCasesBySubject(){
 
     }
