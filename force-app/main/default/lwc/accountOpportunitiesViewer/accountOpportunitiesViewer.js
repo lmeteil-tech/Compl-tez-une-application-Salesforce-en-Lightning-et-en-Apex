@@ -4,7 +4,7 @@ import getOpportunities from '@salesforce/apex/AccountOpportunitiesController.ge
 export default class AccountOpportunitiesViewer extends LightningElement {
     @api recordId;
     @track opportunities;
-    @track error = {};
+    @track error;
     columns = [
         { label: 'Nom Opportunité', fieldName: 'Name', type: 'text' },
         { label: 'Montant', fieldName: 'Amount', type: 'currency' },
