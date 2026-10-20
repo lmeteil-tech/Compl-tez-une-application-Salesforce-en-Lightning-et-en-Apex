@@ -16,13 +16,14 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         this.searchNameOpp = event.target.value;
     }
     handleSearchOpp() {
-        getOpportunities({ recordId: this.recordId })
+        getOpportunities({ accountId: this.recordId, searchNameOpp: this.searchNameOpp })
         .then ((result) => {
             this.opportunities = result;
             this.error = undefined;
         })
         .catch((error) => {
-            this.opportunities = 'Une erreur est survenue lors de la recherche des opportunités.';
+            this.opportunities = undefined;
+            this.error = error;
         });
     }
    /* @wire(getOpportunities, { recordId: '$recordId' }) //error
