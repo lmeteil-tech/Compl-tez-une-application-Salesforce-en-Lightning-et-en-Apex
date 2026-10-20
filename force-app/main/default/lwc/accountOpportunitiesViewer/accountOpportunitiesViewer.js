@@ -11,8 +11,18 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         { label: 'Date de Clôture', fieldName: 'CloseDate', type: 'date' },
         { label: 'Phase', fieldName: 'StageName', type: 'text' }
     ];
-
-    @wire(getOpportunities, { recordId: '$recordId' }) //error
+handleRafraichir() {
+        getOpportunities({ recordId: this.recordId });
+        .then ((result) => {
+            this.opportunities = result;
+            this.error = undefined;
+        })
+        .catch((error) => {
+            this.error = error;
+            this.opportunities = undefined;
+        });
+    }
+   /* @wire(getOpportunities, { recordId: '$recordId' }) //error
     wiredOpportunities({ error, data }) {
         if (data) {
             this.opportunities = data;
@@ -20,7 +30,7 @@ export default class AccountOpportunitiesViewer extends LightningElement {
             this.error = error;
             this.opportunities = undefined;
         }
-    }
+    }*/
 
 
 }
