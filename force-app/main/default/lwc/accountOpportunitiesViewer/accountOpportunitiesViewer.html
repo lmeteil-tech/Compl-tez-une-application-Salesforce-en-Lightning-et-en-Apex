@@ -11,7 +11,7 @@
                             onclick={handleSearchOpp} 
                             variant="brand">
             </lightning-button>
-            <template if:false={opportunities}>
+            <template if:true={opportunities}>
                 <lightning-datatable data={opportunities}
                                      columns={columns}
                                      key-field="Id"
