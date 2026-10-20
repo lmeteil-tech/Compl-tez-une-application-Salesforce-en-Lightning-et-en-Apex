@@ -12,7 +12,7 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         { label: 'Phase', fieldName: 'StageName', type: 'text' }
     ];
 handleRafraichir() {
-        getOpportunities({ recordId: this.recordId });
+        getOpportunities({ recordId: this.recordId })
         .then ((result) => {
             this.opportunities = result;
             this.error = undefined;
