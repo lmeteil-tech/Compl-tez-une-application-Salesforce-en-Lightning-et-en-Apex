@@ -1,7 +1,16 @@
 <template>
     <lightning-card title="Opportunités du Compte" icon-name="standard:opportunity">
         <div class=slds-max-large-size_xx-large>
-            <lightning-button class="slds-m-bottom_small" label="Rafraîchir" onclick={handleRafraichir} variant="brand"></lightning-button>
+            <lightning-input label="Rechercher par Nom d'opportunité"
+                             value={searchNameOpp}
+                             onchange={updateSearchNameOpp}>
+            </lightning-input>
+            <lightning-button 
+                            class="slds-m-bottom_small"
+                            label="Rechercher" 
+                            onclick={handleSearchOpp} 
+                            variant="brand">
+            </lightning-button>
             <template if:false={opportunities}>
                 <lightning-datatable data={opportunities}
                                      columns={columns}
