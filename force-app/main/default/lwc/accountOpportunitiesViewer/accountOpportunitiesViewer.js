@@ -1,5 +1,5 @@
 import { LightningElement, api, wire, track } from 'lwc';
-import getOpportunities from '@salesforce/apex/AccountOpportunitiesController.getOpportunities';
+import getOpportunities from '@salesforce/apex/AccountOpportunitiesController.getOpportunitiesByAccountIdAndName';
 
 export default class AccountOpportunitiesViewer extends LightningElement {
     @api recordId;
@@ -11,15 +11,18 @@ export default class AccountOpportunitiesViewer extends LightningElement {
         { label: 'Date de Clôture', fieldName: 'CloseDate', type: 'date' },
         { label: 'Phase', fieldName: 'StageName', type: 'text' }
     ];
-handleRafraichir() {
+
+    updateSearchNameOpp(event) {
+        this.searchNameOpp = event.target.value;
+    }
+    handleSearchOpp() {
         getOpportunities({ recordId: this.recordId })
         .then ((result) => {
             this.opportunities = result;
             this.error = undefined;
         })
         .catch((error) => {
-            this.error = error;
-            this.opportunities = undefined;
+            this.opportunities = 'Une erreur est survenue lors de la recherche des opportunités.';
         });
     }
    /* @wire(getOpportunities, { recordId: '$recordId' }) //error

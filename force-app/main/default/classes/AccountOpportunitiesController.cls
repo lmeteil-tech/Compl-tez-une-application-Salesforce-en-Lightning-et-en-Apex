@@ -1,6 +1,6 @@
 public with sharing class AccountOpportunitiesController {
     @AuraEnabled(Cacheable=true)
-    public static List<Opportunity> getOpportunities(Id accountId) {
-        return OpportunitySelector.getOpportunitiesByAccountId(accountId);
+    public static List<Opportunity> getOpportunitiesByAccountIdAndName(Id accountId, String searchNameOpp) {
+        return OpportunitySelector.getOpportunitiesByAccountIdAndName(accountId);
     }
 }
